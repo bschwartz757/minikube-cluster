@@ -1,0 +1,22 @@
+{
+  "name": "kubernetes-redis-cluster",
+  "version": "1.0.0",
+  "description": "This k8s module is intended to simplify the creation and operation of a Redis Cluster deployment in Kubernetes.",
+  "main": "redis.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sobotklp/kubernetes-redis-cluster.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sobotklp/kubernetes-redis-cluster/issues"
+  },
+  "homepage": "https://github.com/sobotklp/kubernetes-redis-cluster#readme",
+  "dependencies": {
+    "express": "4.16.2"
+  }
+}

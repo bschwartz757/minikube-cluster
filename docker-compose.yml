@@ -1,0 +1,8 @@
+web:
+  build: .
+  ports:
+   - "4101:4101"
+  volumes:
+   - ./app:/app
+  env_file: ./app/.env
+  restart: always

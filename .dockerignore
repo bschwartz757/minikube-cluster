@@ -1,0 +1,15 @@
+.git
+.dockerignore
+.DS_Store
+.gitignore
+dev
+dev.config.sh
+docker-compose.yml
+Dockerfile
+HISTORY.md
+README.md
+version.txt
+app/node_modules
+app/unit-test-coverage
+app/test
+ops

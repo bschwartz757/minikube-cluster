@@ -35,7 +35,7 @@ data:
     cluster-require-full-coverage no
     cluster-node-timeout 15000
     cluster-config-file nodes.conf
-    cluster-migration-barrier 1 
+    cluster-migration-barrier 1
     appendonly yes
     # Other cluster members need to be able to connect
     protected-mode no
@@ -148,7 +148,7 @@ spec:
       - name: conf
         configMap:
           name: redis-cluster-config
-          items: 
+          items:
           - key: redis.conf
             path: redis.conf
           - key: bootstrap-pod.sh  # TODO: Move this or extract it into its own Docker image
