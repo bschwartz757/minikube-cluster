@@ -30,27 +30,6 @@ cluster.on('error', function(err) {
 // for (var i = 0; i < 1000; i++) {
 //   cluster.set('quux' + i, 'baz' + i)
 // }
-console.log(Redis.Cluster.prototype.sscanStream)
-stream = Redis.Cluster.prototype.sscanStream(
-  /*{
-    match: 'foo*[0-9]*',
-    count: 100
-  }*/
-)
-
-stream.on('data', function(resultKeys) {
-  for (var i = 0; i < resultKeys.length; i++) {
-    if (resultKeys[i] == 'foo500') {
-      key = resultKeys[i]
-    }
-  }
-})
-stream.on('error', function(err) {
-  console.log('stream error: ', err)
-})
-stream.on('end', function() {
-  console.log('stream finished, found: ', key ? 'true' : 'false')
-})
 
 // can get a random key
 // cluster.get('foo500', function(err, res) {

@@ -43,15 +43,22 @@ export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 nvm install $(cat app/.nvmrc)
 
-reqs="docker minikube virtualbox"
+# make sure user has the needed resources
+sysctl -a | grep machdep.cpu.features | grep VMX
+
+reqs="kubectl docker minikube virtualbox"
 # grep for
 for req in $reqs
 do
   echo "ensuring you have $req installed on your machine"
   brew list $req > /dev/null 2>&1 | true
   if [[ ${PIPESTATUS[0]} != 0]]; then
-    echo "brew install $req"
-    brew cask install $req
+    if [[ $req == "kubectl" ]]; then
+      echo "brew install $req"
+      brew install $req; else
+      echo "brew install $req"
+      brew cask install $req
+    fi
     if [[ $? != 0 ]]; then
       error "failed to install $req! aborting..."
       exit -1
@@ -76,6 +83,10 @@ echo "waiting for cluster to be ready..."
 
 sleep 1m
 
+echo "getting redis-trib..."
+docker pull zvelo/redis-trib
+
+echo "here is your new redis cluster:"
 k exec -it redis-cluster-0 redis-cli cluster nodes
 
 echo "building v1 of minikube-redis image"
